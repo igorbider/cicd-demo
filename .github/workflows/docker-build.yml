@@ -1,0 +1,27 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.ib28071969 }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build Docker image
+      run: docker build -t ib28071969/cicd-demo:v1 .
+
+    - name: Push Docker image
+      run: docker push ib28071969/cicd-demo:v1
