@@ -28,3 +28,8 @@ jobs:
 
     - name: Push Docker image
       run: docker push ib28071969/cicd-demo:${IMAGE_TAG}
+
+    - name: Tag latest
+      run: |
+        docker tag ib28071969/cicd-demo:${IMAGE_TAG} ib28071969/cicd-demo:latest
+        docker push ib28071969/cicd-demo:latest  
