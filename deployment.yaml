@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: cicd-demo
-        image: cicd-demo:v1
-        imagePullPolicy: Never
+        image: ib28071969/cicd-demo:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
