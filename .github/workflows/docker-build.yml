@@ -20,8 +20,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME  }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
+    - name: Set image tag
+      run: echo "IMAGE_TAG=${GITHUB_SHA}" >> $GITHUB_ENV
+
     - name: Build Docker image
-      run: docker build -t ib28071969/cicd-demo:v1 .
+      run: docker build -t ib28071969/cicd-demo:${IMAGE_TAG} .
 
     - name: Push Docker image
-      run: docker push ib28071969/cicd-demo:v1
+      run: docker push ib28071969/cicd-demo:${IMAGE_TAG}
